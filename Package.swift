@@ -91,7 +91,9 @@ let package = Package(
       exclude: [
         "NodeDeclarationHash.swift.gyb"
       ],
-      linkerSettings: swiftSyntaxParserLinkerSettings
+      linkerSettings: [
+        .linkedLibrary("_InternalSwiftSyntaxParser", .when(platforms: [.linux])),
+      ]
     ),
     .target(
       name: "lit-test-helper",
